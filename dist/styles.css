@@ -453,3 +453,28 @@ ins.rl { color: var(--cobalt); text-decoration: underline; text-decoration-thick
 .cl-quote mark.high { background: color-mix(in srgb, var(--red) 18%, transparent); box-shadow: inset 0 -2px 0 var(--red); }
 .cl-quote mark.med { background: color-mix(in srgb, var(--amber) 16%, transparent); box-shadow: inset 0 -2px 0 var(--amber); }
 .cl-quote mark.info { background: color-mix(in srgb, var(--cobalt) 14%, transparent); box-shadow: inset 0 -2px 0 var(--cobalt); }
+
+/* Guides */
+.guide .wrap { max-width: 760px; }
+.guide-kicker { font: 600 var(--t-sm)/1.4 var(--font-ui); color: var(--cobalt); letter-spacing: 0.02em; }
+.guide-kicker a { color: inherit; }
+.guide h1 { text-wrap: balance; }
+.guide p, .guide li { font-family: var(--font-doc); font-size: 1.05rem; line-height: 1.7; }
+.guide .updated, .guide .fine, .guide .guide-kicker { font-family: var(--font-ui); }
+.guide ol { margin: 12px 0 0; padding-left: 1.4em; display: grid; gap: 8px; }
+.guide a { color: var(--cobalt); }
+.guide .btn { font-family: var(--font-ui); }
+.guide .btn-primary { color: var(--cobalt-ink); }
+blockquote.law { margin: 16px 0 0; padding: 16px 20px; border-left: 3px solid var(--cobalt); background: var(--sheet); border-radius: 0 8px 8px 0; font: 400 1.08rem/1.65 var(--font-doc); color: var(--ink); }
+blockquote.law cite { display: block; margin-top: 8px; font: 500 var(--t-sm)/1.4 var(--font-ui); font-style: normal; color: var(--ink-2); }
+.guide table.ba del { color: var(--red); text-decoration-thickness: 1px; }
+.guide table.ba ins { color: var(--green); text-decoration: none; background: color-mix(in srgb, var(--green) 10%, transparent); }
+.guide td { font-size: 0.95rem; }
+.guide-cta { margin-top: 40px; padding: 20px 22px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--sheet); display: grid; gap: 12px; }
+.guide-cta p { margin: 0; color: var(--ink); }
+.guide-cta p:last-child { display: flex; flex-wrap: wrap; gap: 10px; }
+.guide-list { list-style: none; margin: 28px 0 0; padding: 0; display: grid; gap: 14px; }
+.guide-list a { display: grid; gap: 6px; padding: 18px 20px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--sheet); text-decoration: none; color: var(--ink); }
+.guide-list a:hover { border-color: var(--cobalt); }
+.guide-list b { font: 700 1.1rem/1.35 var(--font-ui); }
+.guide-list span { color: var(--ink-2); font-family: var(--font-doc); }

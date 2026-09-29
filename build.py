@@ -113,6 +113,18 @@ PAGES = [
     {"file": "terms-of-engagement.html", "src": "pages/terms-of-engagement.html",
      "title": "Terms of Engagement", "seo_title": "Terms of Engagement | 402Scope Compliance",
      "desc": "Terms that apply to MiCA Readiness Reviews and other services from 402Scope Compliance."},
+    {"file": "guides.html", "src": "pages/guides.html",
+     "title": "Guides", "seo_title": "EU Crypto Compliance Guides | 402Scope Compliance",
+     "desc": "Short, sourced guides to MiCA marketing rules, white paper exemptions and crypto terms of service for EU users."},
+    {"file": "mica-marketing-rules.html", "src": "pages/guide-mica-marketing-rules.html",
+     "title": "MiCA marketing rules", "seo_title": "MiCA Marketing Rules: The Article 7 Checklist | 402Scope Compliance",
+     "desc": "What MiCA Article 7 requires from crypto marketing: the four requirements, the mandatory statement, timing, KOLs and fines, with examples."},
+    {"file": "mica-white-paper-exemptions.html", "src": "pages/guide-mica-white-paper-exemptions.html",
+     "title": "MiCA white paper exemptions", "seo_title": "Do You Need a MiCA White Paper? Article 4 Exemptions | 402Scope Compliance",
+     "desc": "When a MiCA white paper is required and when it is not: the Article 4(2) and 4(3) exemptions, what still applies, notification and publication."},
+    {"file": "crypto-terms-of-service-eu.html", "src": "pages/guide-crypto-terms-of-service-eu.html",
+     "title": "Crypto terms of service for EU users", "seo_title": "Crypto Terms of Service for EU Users: 7 Clauses That Fail | 402Scope Compliance",
+     "desc": "Seven clauses in crypto terms of service that are unfair or unenforceable for EU consumers, with the rule behind each and what to write instead."},
     {"file": "cookies.html", "src": "pages/cookies.html",
      "title": "Cookies", "seo_title": "Cookies | 402Scope",
      "desc": "Cookie information for the 402Scope Compliance website."},
@@ -141,6 +153,7 @@ def header(is_home):
       <a href="{base}#checker">Scanner</a>
       <a href="{base}#report">Sample report</a>
       <a href="{base}#pricing">Pricing</a>
+      <a href="guides.html">Guides</a>
       <a class="btn btn-primary" href="{base}#pricing">Get my review</a>
     </nav>
   </div>
@@ -158,7 +171,7 @@ def footer():
       </div>
       <nav aria-labelledby="f-service"><h2 id="f-service">Service</h2><ul>
         <li><a href="index.html#review">The review</a></li><li><a href="index.html#report">Sample report</a></li>
-        <li><a href="index.html#pricing">Pricing</a></li><li><a href="index.html#faq">FAQ</a></li></ul></nav>
+        <li><a href="index.html#pricing">Pricing</a></li><li><a href="index.html#faq">FAQ</a></li><li><a href="guides.html">Guides</a></li></ul></nav>
       <nav aria-labelledby="f-obs"><h2 id="f-obs">402Scope</h2><ul>
         <li><a href="https://402scope.org">Observatory</a></li><li><a href="index.html#observatory">Independence</a></li>
         <li><a href="index.html#about">About</a></li></ul></nav>
