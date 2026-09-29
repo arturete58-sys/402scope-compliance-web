@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<style>
+@font-face { font-family: "Schibsted Grotesk"; font-weight: 400 900; src: url("../fonts/schibsted-grotesk-latin-wght-normal.woff2") format("woff2"); }
+@font-face { font-family: "Literata"; font-weight: 400; src: url("../fonts/literata-latin-400-normal.woff2") format("woff2"); }
+@font-face { font-family: "Literata"; font-weight: 600; src: url("../fonts/literata-latin-600-normal.woff2") format("woff2"); }
+* { box-sizing: border-box; margin: 0; }
+html, body { width: 1280px; height: 800px; overflow: hidden; background: #0a0f1c; font-family: "Schibsted Grotesk", Arial, sans-serif; color: #111726; }
+.stage { position: absolute; inset: 0; display: grid; place-items: center; }
+.win { position: absolute; left: 36px; top: 36px; width: 820px; height: 728px; background: #fff; border-radius: 16px; box-shadow: 0 40px 100px -30px rgba(0,0,0,.8); overflow: hidden; }
+.bar { height: 56px; border-bottom: 1px solid #dbe0e9; display: flex; align-items: center; gap: 8px; padding: 0 18px; font-size: 18px; color: #4a5467; }
+.bar i { width: 11px; height: 11px; border-radius: 50%; background: #dbe0e9; display: inline-block; }
+.bar span { margin-left: 12px; font-weight: 600; color: #111726; }
+.bar em { margin-left: auto; font-style: normal; font-size: 16px; color: #2446c8; font-weight: 700; opacity: 0; }
+.page { padding: 34px 40px; font-family: "Literata", Georgia, serif; font-size: 29px; line-height: 1.75; position: relative; }
+.page h1 { font-family: "Literata", Georgia, serif; font-weight: 600; font-size: 40px; margin-bottom: 16px; }
+.page p { margin-bottom: 14px; line-height: 1.6; }
+.hit { position: relative; border-radius: 4px; transition: background-color .4s ease, color .4s ease; }
+.hit.flag { background: #fbe8e6; }
+.hit.struck { color: #b3322b; background: none; text-decoration: line-through; text-decoration-thickness: 2px; }
+ins { color: #2446c8; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 4px; display: none; }
+ins.on { display: inline; }
+.scan { position: absolute; left: 0; right: 0; top: 56px; height: 3px; background: linear-gradient(90deg, transparent, #8ea8ff, transparent); box-shadow: 0 0 24px #8ea8ff; opacity: 0; }
+.tags { position: absolute; left: 880px; top: 90px; width: 370px; display: grid; gap: 16px; }
+.tag { background: #121a2d; border: 1px solid #232d45; color: #edf1f8; border-radius: 12px; padding: 14px 16px; opacity: 0; transform: translateX(24px); transition: opacity .5s ease, transform .6s cubic-bezier(.16,1,.3,1); font-size: 18px; }
+.tag.on { opacity: 1; transform: none; }
+.tag b { display: flex; align-items: center; gap: 10px; font-size: 20px; line-height: 1.25; }
+.tag b::before { content: ""; width: 9px; height: 9px; border-radius: 50%; background: #ff8f84; }
+.tag small { display: block; color: #a3aec4; margin-top: 6px; font-size: 16px; }
+.report { position: absolute; right: 30px; bottom: 36px; width: 560px; background: #fff; border-radius: 14px; padding: 22px 24px; box-shadow: 0 40px 100px -30px rgba(0,0,0,.9); opacity: 0; transform: translateY(40px) scale(.97); transition: opacity .6s ease, transform .8s cubic-bezier(.16,1,.3,1); }
+.report.on { opacity: 1; transform: none; }
+.report h2 { font-size: 27px; letter-spacing: -.02em; margin-bottom: 4px; }
+.report p { font-size: 18px; color: #4a5467; margin-bottom: 14px; }
+.row { display: flex; justify-content: space-between; font-size: 18px; padding: 9px 0; border-top: 1px solid #dbe0e9; }
+.row span:last-child { display: flex; align-items: center; gap: 7px; color: #4a5467; }
+.row span:last-child::before { content: ""; width: 9px; height: 9px; border-radius: 50%; background: var(--c); }
+.brand { display: none; position: absolute; left: 90px; bottom: 34px; color: #a3aec4; font-size: 15px; display: flex; gap: 10px; align-items: center; }
+.brand b { color: #edf1f8; }
+.fade { position: absolute; inset: 0; background: #0a0f1c; opacity: 1; transition: opacity .6s ease; pointer-events: none; }
+</style>
+</head>
+<body>
+<div class="stage">
+  <div class="win" id="win">
+    <div class="bar"><i></i><i></i><i></i><span>Staking page, launch draft</span><em id="status">Reviewing</em></div>
+    <div class="page">
+      <h1>Stake ALBA</h1>
+      <p>Lock your ALBA for 90 days and <span class="hit" id="h1">earn a guaranteed 18% APY</span> <ins id="i1">receive rewards that vary and can fall to zero</ins>.</p>
+      <p><span class="hit" id="h2">No risk, fully protected.</span> <ins id="i2">You can lose all the value of the tokens you buy.</ins></p>
+      <p><span class="hit" id="h3">Join now, only 50 spots left.</span> <ins id="i3">This marketing communication has not been reviewed or approved by any EU competent authority.</ins></p>
+    </div>
+    <div class="scan" id="scan"></div>
+  </div>
+  <div class="tags">
+    <div class="tag" id="t1"><b>Return promised as certain</b><small>MiCA Art. 7 · fair, clear, not misleading</small></div>
+    <div class="tag" id="t2"><b>Risk denied</b><small>MiCA Art. 7 · risk statement required</small></div>
+    <div class="tag" id="t3"><b>Pressure tactic, disclaimer missing</b><small>Directive 2005/29/EC · MiCA Art. 7</small></div>
+  </div>
+  <div class="report" id="report">
+    <h2>Not ready for EU users yet</h2>
+    <p>3 fixes before launch · report delivered in 72 h</p>
+    <div class="row" style="--c:#b3322b"><span>Marketing and claims</span><span>Fix before launch</span></div>
+    <div class="row" style="--c:#925500"><span>White paper</span><span>Fix before notification</span></div>
+    <div class="row" style="--c:#1c7043"><span>AML and Travel Rule</span><span>No change</span></div>
+  </div>
+</div>
+<div class="fade" id="fade"></div>
+<script>
+const $ = (id) => document.getElementById(id);
+const at = (ms, fn) => setTimeout(fn, ms);
+window.run = () => {
+  at(100, () => { $('fade').style.opacity = 0; });
+  at(700, () => { $('status').style.opacity = 1; $('scan').animate([{ top: '56px', opacity: 1 }, { top: '700px', opacity: 1 }, { top: '720px', opacity: 0 }], { duration: 2200, easing: 'cubic-bezier(.45,0,.2,1)', fill: 'forwards' }); });
+  at(1500, () => { $('h1').classList.add('flag'); $('t1').classList.add('on'); });
+  at(2100, () => { $('h2').classList.add('flag'); $('t2').classList.add('on'); });
+  at(2700, () => { $('h3').classList.add('flag'); $('t3').classList.add('on'); });
+  at(4200, () => { $('status').textContent = 'Redlined'; $('h1').classList.add('struck'); $('i1').classList.add('on'); });
+  at(5000, () => { $('h2').classList.add('struck'); $('i2').classList.add('on'); });
+  at(5800, () => { $('h3').classList.add('struck'); $('i3').classList.add('on'); });
+  at(7200, () => { $('report').classList.add('on'); });
+  at(10400, () => { $('fade').style.opacity = 1; });
+};
+</script>
+</body>
+</html>

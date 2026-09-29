@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://compliance.402scope.org/sitemap.xml

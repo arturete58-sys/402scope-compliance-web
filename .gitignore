@@ -1,0 +1,7 @@
+# Vista previa local y material de trabajo
+preview/
+fontwork/
+shots/
+__pycache__/
+*.pyc
+.DS_Store

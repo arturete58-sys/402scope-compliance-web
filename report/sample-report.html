@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>MiCA Readiness Review, sample report</title>
+<style>
+@font-face { font-family: "Schibsted Grotesk"; font-weight: 400 900; src: url("../fonts/schibsted-grotesk-latin-wght-normal.woff2") format("woff2"); }
+@font-face { font-family: "Literata"; font-weight: 400; src: url("../fonts/literata-latin-400-normal.woff2") format("woff2"); }
+@font-face { font-family: "Literata"; font-weight: 600; src: url("../fonts/literata-latin-600-normal.woff2") format("woff2"); }
+@page { size: A4; margin: 0; }
+:root { --ink: #111726; --ink-2: #4a5467; --line: #dbe0e9; --cobalt: #2446c8; --wash: #e7ecfb; --red: #b3322b; --amber: #925500; --green: #1c7043; --night: #0a0f1c; --paper: #ffffff; --ground: #f3f5f9; }
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body { font-family: "Schibsted Grotesk", Arial, sans-serif; color: var(--ink); font-size: 10.5pt; line-height: 1.5; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+.page { width: 210mm; height: 297mm; padding: 20mm 18mm 18mm; position: relative; page-break-after: always; overflow: hidden; background: var(--paper); }
+.page:last-child { page-break-after: auto; }
+.run { position: absolute; left: 18mm; right: 18mm; bottom: 10mm; display: flex; justify-content: space-between; font-size: 8pt; color: var(--ink-2); border-top: 1px solid var(--line); padding-top: 3mm; }
+h1, h2, h3 { margin: 0; line-height: 1.12; letter-spacing: -0.02em; }
+h2 { font-size: 20pt; margin-bottom: 4mm; }
+h3 { font-size: 11.5pt; margin-bottom: 2mm; }
+p { margin: 0 0 3mm; }
+.muted { color: var(--ink-2); }
+.brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 12pt; }
+.brand small { display: block; font-weight: 400; font-size: 8.5pt; color: #a3aec4; }
+.cover { background: var(--night); color: #edf1f8; display: flex; flex-direction: column; justify-content: space-between; }
+.cover h1 { font-size: 38pt; letter-spacing: -0.035em; max-width: 12ch; }
+.cover .sub { font-size: 13pt; color: #a3aec4; margin-top: 6mm; max-width: 30em; }
+.cover dl { display: grid; grid-template-columns: max-content 1fr; gap: 3mm 10mm; margin: 0; font-size: 10pt; }
+.cover dt { color: #a3aec4; }
+.cover dd { margin: 0; }
+.stamp { display: inline-block; border: 1.5px solid #8ea8ff; color: #8ea8ff; border-radius: 999px; padding: 1.5mm 4mm; font-size: 9pt; font-weight: 700; margin-bottom: 8mm; }
+.verdict { background: var(--ground); border: 1px solid var(--line); border-radius: 3mm; padding: 5mm 6mm; margin-bottom: 7mm; }
+.verdict strong { font-size: 13pt; display: block; margin-bottom: 1.5mm; }
+.lights { width: 100%; border-collapse: collapse; margin-bottom: 7mm; font-size: 9.5pt; }
+.lights td, .lights th { border-bottom: 1px solid var(--line); padding: 2.4mm 2mm; text-align: left; vertical-align: top; }
+.lights th { font-size: 8.5pt; color: var(--ink-2); font-weight: 600; }
+.dot { display: inline-block; width: 3mm; height: 3mm; border-radius: 50%; margin-right: 2mm; vertical-align: -0.3mm; }
+.dot.red { background: var(--red); } .dot.amber { background: var(--amber); } .dot.green { background: var(--green); } .dot.grey { background: #b7bfcc; }
+.prio { counter-reset: p; list-style: none; padding: 0; margin: 0; display: grid; gap: 3mm; }
+.prio li { counter-increment: p; display: grid; grid-template-columns: 8mm 1fr; gap: 3mm; }
+.prio li::before { content: counter(p); width: 7mm; height: 7mm; border-radius: 50%; background: var(--wash); color: var(--cobalt); font-weight: 700; display: grid; place-items: center; font-size: 9pt; }
+.findings { width: 100%; border-collapse: collapse; font-size: 8.8pt; }
+.findings th { text-align: left; font-size: 8pt; color: var(--ink-2); font-weight: 600; border-bottom: 1.5px solid var(--ink); padding: 2mm; }
+.findings td { border-bottom: 1px solid var(--line); padding: 2.4mm 2mm; vertical-align: top; }
+.findings td:first-child { white-space: nowrap; font-weight: 700; }
+.lvl { display: inline-block; font-size: 7.5pt; font-weight: 700; border: 1px solid currentColor; border-radius: 999px; padding: 0.4mm 2.2mm; }
+.lvl.high { color: var(--red); } .lvl.med { color: var(--amber); } .lvl.ok { color: var(--green); }
+.redline { border: 1px solid var(--line); border-radius: 3mm; margin-bottom: 6mm; overflow: hidden; }
+.redline header { background: var(--ground); padding: 2.6mm 4mm; display: flex; justify-content: space-between; gap: 4mm; font-size: 9pt; border-bottom: 1px solid var(--line); }
+.redline header b { font-size: 9.5pt; }
+.redline .text { font-family: "Literata", Georgia, serif; font-size: 10.5pt; line-height: 1.7; padding: 4mm; }
+.redline .why { padding: 0 4mm 4mm; font-size: 9pt; color: var(--ink-2); }
+del { color: var(--red); text-decoration: line-through; text-decoration-thickness: 1.2px; }
+ins { color: var(--cobalt); text-decoration: underline; text-decoration-thickness: 1.2px; text-underline-offset: 2px; }
+.steps { width: 100%; border-collapse: collapse; font-size: 9.5pt; margin-bottom: 8mm; }
+.steps td, .steps th { border-bottom: 1px solid var(--line); padding: 2.4mm 2mm; text-align: left; vertical-align: top; }
+.steps th { font-size: 8.5pt; color: var(--ink-2); font-weight: 600; }
+.box { border: 1px solid var(--line); border-radius: 3mm; padding: 5mm 6mm; font-size: 9pt; color: var(--ink-2); }
+.box h3 { color: var(--ink); }
+.sample-note { position: absolute; top: 8mm; right: 18mm; font-size: 7.5pt; font-weight: 700; color: var(--cobalt); border: 1px solid var(--cobalt); border-radius: 999px; padding: 0.6mm 2.4mm; }
+</style>
+</head>
+<body>
+
+<section class="page cover">
+  <div class="brand">
+    <svg width="30" height="30" viewBox="0 0 32 32"><rect x="1" y="1" width="30" height="30" rx="8" fill="#141c30" stroke="#2c3858"/><circle cx="16" cy="16" r="7.5" fill="none" stroke="#edf1f8" stroke-width="2"/><path d="M16 4.5v4M16 23.5v4M4.5 16h4M23.5 16h4" stroke="#edf1f8" stroke-width="2" stroke-linecap="round"/><circle cx="16" cy="16" r="2.4" fill="#8ea8ff"/></svg>
+    <span>402Scope<small>Compliance</small></span>
+  </div>
+  <div>
+    <span class="stamp">Sample report, fictional project</span>
+    <h1>MiCA Readiness Review</h1>
+    <p class="sub">Project Alba, a staking token preparing to market to EU users. Public materials reviewed against MiCA, AML, consumer and data protection rules.</p>
+  </div>
+  <dl>
+    <dt>Materials reviewed</dt><dd>Website (6 pages), white paper v0.9, terms of use, privacy notice, 14 posts on X, Telegram and Discord</dd>
+    <dt>Review date</dt><dd>29 September 2026</dd>
+    <dt>Reviewer</dt><dd>Arturo Ferrándiz Fernández, 402Scope Compliance</dd>
+    <dt>Nature</dt><dd>Regulatory analysis, not legal advice. Not a law firm.</dd>
+  </dl>
+</section>
+
+<section class="page">
+  <span class="sample-note">Sample</span>
+  <h2>Summary</h2>
+  <div class="verdict">
+    <strong>Not ready to market to EU users yet. Three fixes block the launch.</strong>
+    <span class="muted">All three are in marketing copy and can be fixed in about a week. The custody question needs a decision before the white paper is notified.</span>
+  </div>
+  <table class="lights">
+    <thead><tr><th>Area</th><th>Status</th><th>Main point</th></tr></thead>
+    <tbody>
+      <tr><td>Marketing and claims</td><td><span class="dot red"></span>Fix before launch</td><td>Fixed yield promised; required statement missing</td></tr>
+      <tr><td>White paper</td><td><span class="dot amber"></span>Fix before notification</td><td>Risk section generic; published before notification</td></tr>
+      <tr><td>Classification</td><td><span class="dot green"></span>No change</td><td>Other crypto-asset under MiCA Title II</td></tr>
+      <tr><td>Service licensing</td><td><span class="dot amber"></span>Decision needed</td><td>Team wallet holds staked tokens for users</td></tr>
+      <tr><td>AML and Travel Rule</td><td><span class="dot green"></span>No change</td><td>Screening and geo-blocking in place</td></tr>
+      <tr><td>Stablecoins and payments</td><td><span class="dot grey"></span>Not applicable</td><td>No stablecoin or fiat flows</td></tr>
+      <tr><td>Terms and consumers</td><td><span class="dot amber"></span>Fix before launch</td><td>No governing law or complaint route</td></tr>
+      <tr><td>Privacy</td><td><span class="dot amber"></span>Fix before launch</td><td>Wallet addresses and analytics not covered</td></tr>
+    </tbody>
+  </table>
+  <h3>Three priorities</h3>
+  <ol class="prio">
+    <li><span><b>Remove the fixed-yield promise</b> from the staking page and every social post that repeats it (findings H1 and M6).</span></li>
+    <li><span><b>Add the risk statement and the MiCA disclaimer</b> next to every call to action (H2, H3).</span></li>
+    <li><span><b>Decide who holds staked tokens.</b> If the team wallet keeps custody for users, use an authorised provider or assess authorisation (M3).</span></li>
+  </ol>
+  <div class="run"><span>402Scope Compliance · MiCA Readiness Review · Project Alba (sample)</span><span>2</span></div>
+</section>
+
+<section class="page">
+  <span class="sample-note">Sample</span>
+  <h2>Findings</h2>
+  <p class="muted">Ranked by level. Each finding cites the rule behind it and the change to make.</p>
+  <table class="findings">
+    <thead><tr><th>Ref</th><th>Level</th><th>Finding</th><th>Rule</th><th>What to change</th></tr></thead>
+    <tbody>
+      <tr><td>H1</td><td><span class="lvl high">High</span></td><td>Staking page promises a guaranteed 18% APY</td><td>MiCA Art. 7</td><td>Describe rewards as variable; remove guarantees</td></tr>
+      <tr><td>H2</td><td><span class="lvl high">High</span></td><td>No risk statement near the "Stake now" button</td><td>MiCA Art. 7</td><td>Add a plain risk statement above the button</td></tr>
+      <tr><td>H3</td><td><span class="lvl high">High</span></td><td>Marketing lacks the statement that no authority has reviewed it</td><td>MiCA Art. 7</td><td>Add the required statement to website and posts</td></tr>
+      <tr><td>M1</td><td><span class="lvl med">Medium</span></td><td>White paper v0.9 is public before notification</td><td>MiCA Art. 8</td><td>Unpublish until notified, or label as draft not for marketing</td></tr>
+      <tr><td>M2</td><td><span class="lvl med">Medium</span></td><td>Risk section lists generic crypto risks only</td><td>MiCA Art. 6</td><td>Add project risks: slashing, smart contract, lock-up</td></tr>
+      <tr><td>M3</td><td><span class="lvl med">Medium</span></td><td>Team wallet holds staked tokens on behalf of users</td><td>MiCA Art. 59</td><td>Use an authorised custodian or assess CASP authorisation</td></tr>
+      <tr><td>M4</td><td><span class="lvl med">Medium</span></td><td>Terms name no governing law or complaint route</td><td>Directive 93/13/EEC</td><td>Add governing law, complaints email and response time</td></tr>
+      <tr><td>M5</td><td><span class="lvl med">Medium</span></td><td>Privacy notice omits wallet addresses and analytics</td><td>GDPR Art. 13</td><td>List purposes, legal basis, retention and processors</td></tr>
+      <tr><td>M6</td><td><span class="lvl med">Medium</span></td><td>Six social posts repeat the fixed-yield claim</td><td>MiCA Art. 7</td><td>Edit or delete; pin a corrected post</td></tr>
+      <tr><td>O1</td><td><span class="lvl ok">OK</span></td><td>Sanctions screening and geo-blocking at onboarding</td><td>Reg. (EU) 2023/1113</td><td>No change needed</td></tr>
+    </tbody>
+  </table>
+  <div class="run"><span>402Scope Compliance · MiCA Readiness Review · Project Alba (sample)</span><span>3</span></div>
+</section>
+
+<section class="page">
+  <span class="sample-note">Sample</span>
+  <h2>Redlines</h2>
+  <p class="muted">Suggested wording for the high findings. Deleted text in red, new text in blue.</p>
+  <div class="redline">
+    <header><b>H1 · Staking page, hero</b><span>MiCA Art. 7</span></header>
+    <div class="text">Lock your ALBA for 90 days and <del>earn a guaranteed 18% APY</del> <ins>receive staking rewards. Rewards vary with network activity and can fall to zero</ins>.</div>
+    <p class="why">A guaranteed return is not fair, clear and not misleading when rewards depend on the network. The same claim appears in six posts (M6).</p>
+  </div>
+  <div class="redline">
+    <header><b>H2 · Staking page, above "Stake now"</b><span>MiCA Art. 7</span></header>
+    <div class="text"><ins>Staking locks your tokens for 90 days. You can lose all the value of the tokens you stake, and you may not be able to sell them during the lock-up.</ins></div>
+    <p class="why">The risk must be visible where the decision is made, not only in the white paper.</p>
+  </div>
+  <div class="redline">
+    <header><b>H3 · Website footer and every marketing post</b><span>MiCA Art. 7</span></header>
+    <div class="text"><ins>This crypto-asset marketing communication has not been reviewed or approved by any competent authority in any Member State of the European Union. The offeror of the crypto-asset is solely responsible for its content.</ins></div>
+    <p class="why">MiCA requires this statement in marketing communications for crypto-assets other than ARTs and EMTs.</p>
+  </div>
+  <div class="run"><span>402Scope Compliance · MiCA Readiness Review · Project Alba (sample)</span><span>4</span></div>
+</section>
+
+<section class="page">
+  <span class="sample-note">Sample</span>
+  <h2>Next steps</h2>
+  <table class="steps">
+    <thead><tr><th>When</th><th>Action</th><th>Findings</th></tr></thead>
+    <tbody>
+      <tr><td>This week</td><td>Edit staking page, footer and social posts</td><td>H1, H2, H3, M6</td></tr>
+      <tr><td>Before notification</td><td>Decide custody model; rewrite white paper risk section</td><td>M1, M2, M3</td></tr>
+      <tr><td>Before launch</td><td>Update terms and privacy notice</td><td>M4, M5</td></tr>
+      <tr><td>After launch</td><td>Review every new campaign against MiCA Art. 7 before publishing</td><td>All marketing</td></tr>
+    </tbody>
+  </table>
+  <div class="box">
+    <h3>Scope and limitations</h3>
+    <p>This review covers the public materials listed on the cover, as they stood on the review date, against EU law and Spanish rules where relevant. Jurisdictions outside the EU are flagged, not analysed. It is a regulatory analysis, not legal advice or a legal opinion, and it does not assess the technical security of smart contracts, investment merits or tax treatment.</p>
+    <p>This is a sample report about a fictional project, written to show the format of a real review.</p>
+  </div>
+  <p style="margin-top:8mm" class="muted">402Scope Compliance · compliance.402scope.org · hello@402scope.org</p>
+  <div class="run"><span>402Scope Compliance · MiCA Readiness Review · Project Alba (sample)</span><span>5</span></div>
+</section>
+</body>
+</html>
