@@ -139,10 +139,43 @@
   <section class="section checker-section" id="checker" aria-labelledby="checker-title">
     <div class="wrap">
       <div class="section-head">
-        <h2 id="checker-title">Check your own copy in seconds</h2>
-        <p class="lead">Paste a paragraph from your website or a post. The checker flags the phrases that most often break EU marketing rules. It runs in your browser and sends nothing anywhere.</p>
+        <h2 id="checker-title">Check your launch in seconds</h2>
+        <p class="lead">Scan your website, or paste a paragraph from a post. Both flag the problems that most often break EU crypto rules, each with the rule behind it and the fix.</p>
       </div>
-      <div class="checker">
+      <div class="tabs tool-tabs" role="tablist" aria-label="Checker">
+        <button type="button" role="tab" id="tool-scan" aria-controls="panel-scan" aria-selected="true">Scan a website</button>
+        <button type="button" role="tab" id="tool-copy" aria-controls="panel-copy" aria-selected="false" tabindex="-1">Paste copy</button>
+      </div>
+      <div class="checker" role="tabpanel" id="panel-scan" aria-labelledby="tool-scan">
+        <form class="checker-input" id="scan-form" novalidate>
+          <label for="scan-url">Your website</label>
+          <input id="scan-url" name="url" type="text" inputmode="url" autocomplete="url" spellcheck="false" placeholder="yourproject.io" required>
+          <div class="checker-actions">
+            <button type="submit" class="btn btn-primary" id="scan-run">{{ICON_SEARCH}}Scan website</button>
+          </div>
+          <p class="checker-note">We read your home page and, if linked, your terms, privacy notice and legal notice. Nothing is stored and nobody is contacted. Indicative check in English, not a review: a clean result does not mean the website complies.</p>
+        </form>
+        <div class="checker-output" aria-live="polite" aria-busy="false" id="scan-output">
+          <div class="scan-empty" id="scan-empty">
+            <p><b>What the scan looks at</b></p>
+            <ul>
+              <li>Return, risk and protection claims on the home page</li>
+              <li>The statement that no EU authority has approved the marketing</li>
+              <li>White paper, terms, privacy notice and who runs the site</li>
+              <li>Trackers loaded without a consent tool</li>
+            </ul>
+          </div>
+          <div class="checker-summary" id="scan-summary" hidden></div>
+          <p class="scan-notice" id="scan-notice" hidden></p>
+          <ol class="checker-list" id="scan-list"></ol>
+          <details class="scan-passed" id="scan-passed" hidden><summary></summary><ul></ul></details>
+          <div class="checker-cta" id="scan-cta" hidden>
+            <p>A scan reads a few pages for known patterns. The review reads everything you publish, checks it against the full checklist and gives you the fixed wording.</p>
+            <a class="btn btn-primary" href="#pricing">Get my review {{ICON_ARROW}}</a>
+          </div>
+        </div>
+      </div>
+      <div class="checker" role="tabpanel" id="panel-copy" aria-labelledby="tool-copy" hidden>
         <div class="checker-input">
           <label for="copy">Your marketing copy</label>
           <textarea id="copy" rows="9" spellcheck="false">Stake ALBA and earn a guaranteed 18% APY. No risk: your tokens are fully protected and you can withdraw anytime. No KYC needed. Only 50 spots left, join now!</textarea>
@@ -150,7 +183,7 @@
             <button type="button" class="btn btn-primary" id="run-check">{{ICON_SEARCH}}Check copy</button>
             <button type="button" class="btn btn-line" id="clear-check">Clear</button>
           </div>
-          <p class="checker-note">Indicative keyword check in English, not a review. A clean result does not mean the copy complies.</p>
+          <p class="checker-note">Runs in your browser and sends nothing anywhere. Indicative keyword check in English, not a review: a clean result does not mean the copy complies.</p>
         </div>
         <div class="checker-output" aria-live="polite">
           <div class="checker-summary" id="check-summary"></div>

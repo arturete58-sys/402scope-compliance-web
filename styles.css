@@ -432,3 +432,24 @@ ins.rl { color: var(--cobalt); text-decoration: underline; text-decoration-thick
 .legal h3 { font-size: 1.05rem; margin-top: 24px; }
 .legal table:has(td.k) { min-width: 0; }
 @media (max-width: 600px) { .legal td.k { width: 36%; } .legal th, .legal td { padding: 8px 8px; } }
+
+/* Scanner tab */
+.tool-tabs { padding: 0; margin-bottom: 20px; }
+.checker-input input[type="text"] { width: 100%; font: 400 1.05rem/1.4 var(--font-ui); color: var(--ink); background: var(--ground); border: 1px solid var(--line); border-radius: 10px; padding: 13px 16px; }
+.checker-input input[type="text"]:focus { outline: 2px solid var(--cobalt); outline-offset: 1px; border-color: transparent; }
+.scan-empty { color: var(--ink-2); display: grid; gap: 8px; }
+.scan-empty b { color: var(--ink); }
+.scan-empty ul { margin: 0; padding-left: 1.2em; display: grid; gap: 6px; }
+.scan-msg { color: var(--ink-2); }
+.scan-site { color: var(--ink-2); font-size: var(--t-sm); margin-left: auto; overflow-wrap: anywhere; }
+.scan-notice { font-size: 0.93rem; color: var(--ink); background: color-mix(in srgb, var(--amber) 12%, transparent); border-left: 3px solid var(--amber); padding: 10px 14px; border-radius: 6px; }
+.lvl.info { color: var(--cobalt); }
+.cl-page { color: var(--ink-2); font-style: italic; }
+.scan-passed { border-top: 1px solid var(--line); padding-top: 12px; }
+.scan-passed summary { cursor: pointer; font-weight: 600; color: var(--green); }
+.scan-passed ul { list-style: none; margin: 10px 0 0; padding: 0; display: grid; gap: 6px; }
+.scan-passed li { display: flex; flex-wrap: wrap; gap: 6px 10px; color: var(--ink-2); font-size: 0.93rem; }
+.cl-quote mark { color: inherit; border-radius: 3px; padding: 0 2px; }
+.cl-quote mark.high { background: color-mix(in srgb, var(--red) 18%, transparent); box-shadow: inset 0 -2px 0 var(--red); }
+.cl-quote mark.med { background: color-mix(in srgb, var(--amber) 16%, transparent); box-shadow: inset 0 -2px 0 var(--amber); }
+.cl-quote mark.info { background: color-mix(in srgb, var(--cobalt) 14%, transparent); box-shadow: inset 0 -2px 0 var(--cobalt); }

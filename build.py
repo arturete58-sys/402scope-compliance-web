@@ -138,7 +138,7 @@ def header(is_home):
     <nav class="nav" aria-label="Main">
       <a href="{base}#who">Who it's for</a>
       <a href="{base}#examples">Examples</a>
-      <a href="{base}#checker">Checker</a>
+      <a href="{base}#checker">Scanner</a>
       <a href="{base}#report">Sample report</a>
       <a href="{base}#pricing">Pricing</a>
       <a class="btn btn-primary" href="{base}#pricing">Get my review</a>
@@ -200,7 +200,7 @@ def scripts():
     else:
         libs = ('<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>'
                 '<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>')
-    return libs + '<script src="js/checker.js" defer></script><script src="js/motion.js" defer></script>'
+    return libs + '<script src="js/checker.js" defer></script><script src="js/scan.js" defer></script><script src="js/motion.js" defer></script>'
 
 
 def fill(text):

@@ -40,3 +40,11 @@ Cada cambio que se suba al repositorio se publica solo.
 ## Testimonios
 
 Añade solo opiniones reales, con permiso escrito del cliente, en `TESTIMONIALS` dentro de `build.py`. Baja `FOUNDING_OPEN` cada vez que cierres un cliente fundador.
+
+## Website scanner (`/api/scan`)
+
+`functions/api/scan.js` is a Cloudflare Pages Function. Cloudflare Pages deploys it automatically from the `functions/` folder at the root of the repository (no build command needed). It fetches the public home page plus the terms, privacy and legal notice pages linked from it, runs indicative checks and returns JSON. Nothing is stored; results are cached for one hour per URL with the Cache API.
+
+- Front end: `js/scan.js` (tab "Scan a website" in the checker section). On the preview and on any host without the function, the tab says the scanner is not available and offers the copy checker.
+- Recommended after the first deploy: in Cloudflare, Security > WAF > Rate limiting rules, add one rule for `/api/scan` (for example 10 requests per minute per IP, block for 10 minutes). The free plan includes one rule.
+- Local test: set `SCAN_ALLOW_LOCAL=1` in the function environment to allow localhost targets.

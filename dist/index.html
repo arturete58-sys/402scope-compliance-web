@@ -25,7 +25,7 @@
     <nav class="nav" aria-label="Main">
       <a href="#who">Who it's for</a>
       <a href="#examples">Examples</a>
-      <a href="#checker">Checker</a>
+      <a href="#checker">Scanner</a>
       <a href="#report">Sample report</a>
       <a href="#pricing">Pricing</a>
       <a class="btn btn-primary" href="#pricing">Get my review</a>
@@ -173,10 +173,43 @@
   <section class="section checker-section" id="checker" aria-labelledby="checker-title">
     <div class="wrap">
       <div class="section-head">
-        <h2 id="checker-title">Check your own copy in seconds</h2>
-        <p class="lead">Paste a paragraph from your website or a post. The checker flags the phrases that most often break EU marketing rules. It runs in your browser and sends nothing anywhere.</p>
+        <h2 id="checker-title">Check your launch in seconds</h2>
+        <p class="lead">Scan your website, or paste a paragraph from a post. Both flag the problems that most often break EU crypto rules, each with the rule behind it and the fix.</p>
       </div>
-      <div class="checker">
+      <div class="tabs tool-tabs" role="tablist" aria-label="Checker">
+        <button type="button" role="tab" id="tool-scan" aria-controls="panel-scan" aria-selected="true">Scan a website</button>
+        <button type="button" role="tab" id="tool-copy" aria-controls="panel-copy" aria-selected="false" tabindex="-1">Paste copy</button>
+      </div>
+      <div class="checker" role="tabpanel" id="panel-scan" aria-labelledby="tool-scan">
+        <form class="checker-input" id="scan-form" novalidate>
+          <label for="scan-url">Your website</label>
+          <input id="scan-url" name="url" type="text" inputmode="url" autocomplete="url" spellcheck="false" placeholder="yourproject.io" required>
+          <div class="checker-actions">
+            <button type="submit" class="btn btn-primary" id="scan-run"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"/></svg>Scan website</button>
+          </div>
+          <p class="checker-note">We read your home page and, if linked, your terms, privacy notice and legal notice. Nothing is stored and nobody is contacted. Indicative check in English, not a review: a clean result does not mean the website complies.</p>
+        </form>
+        <div class="checker-output" aria-live="polite" aria-busy="false" id="scan-output">
+          <div class="scan-empty" id="scan-empty">
+            <p><b>What the scan looks at</b></p>
+            <ul>
+              <li>Return, risk and protection claims on the home page</li>
+              <li>The statement that no EU authority has approved the marketing</li>
+              <li>White paper, terms, privacy notice and who runs the site</li>
+              <li>Trackers loaded without a consent tool</li>
+            </ul>
+          </div>
+          <div class="checker-summary" id="scan-summary" hidden></div>
+          <p class="scan-notice" id="scan-notice" hidden></p>
+          <ol class="checker-list" id="scan-list"></ol>
+          <details class="scan-passed" id="scan-passed" hidden><summary></summary><ul></ul></details>
+          <div class="checker-cta" id="scan-cta" hidden>
+            <p>A scan reads a few pages for known patterns. The review reads everything you publish, checks it against the full checklist and gives you the fixed wording.</p>
+            <a class="btn btn-primary" href="#pricing">Get my review <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></a>
+          </div>
+        </div>
+      </div>
+      <div class="checker" role="tabpanel" id="panel-copy" aria-labelledby="tool-copy" hidden>
         <div class="checker-input">
           <label for="copy">Your marketing copy</label>
           <textarea id="copy" rows="9" spellcheck="false">Stake ALBA and earn a guaranteed 18% APY. No risk: your tokens are fully protected and you can withdraw anytime. No KYC needed. Only 50 spots left, join now!</textarea>
@@ -184,7 +217,7 @@
             <button type="button" class="btn btn-primary" id="run-check"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"/></svg>Check copy</button>
             <button type="button" class="btn btn-line" id="clear-check">Clear</button>
           </div>
-          <p class="checker-note">Indicative keyword check in English, not a review. A clean result does not mean the copy complies.</p>
+          <p class="checker-note">Runs in your browser and sends nothing anywhere. Indicative keyword check in English, not a review: a clean result does not mean the copy complies.</p>
         </div>
         <div class="checker-output" aria-live="polite">
           <div class="checker-summary" id="check-summary"></div>
@@ -425,7 +458,7 @@
   }
 })();
 </script>
-<script src="vendor/gsap.min.js" defer></script><script src="vendor/ScrollTrigger.min.js" defer></script><script src="js/checker.js" defer></script><script src="js/motion.js" defer></script>
+<script src="vendor/gsap.min.js" defer></script><script src="vendor/ScrollTrigger.min.js" defer></script><script src="js/checker.js" defer></script><script src="js/scan.js" defer></script><script src="js/motion.js" defer></script>
 
 <footer class="site-footer">
   <div class="wrap">
