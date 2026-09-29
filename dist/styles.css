@@ -422,3 +422,13 @@ ins.rl { color: var(--cobalt); text-decoration: underline; text-decoration-thick
   html { scroll-behavior: auto; }
   *, *::before, *::after { transition: none !important; animation: none !important; }
 }
+
+/* Terms v2 */
+.legal ol { margin: 12px 0 0; padding-left: 1.4em; display: grid; gap: 6px; }
+.legal .box { margin-top: 20px; padding: 16px 18px; background: var(--cobalt-wash); border-left: 3px solid var(--cobalt); border-radius: 4px; }
+.legal .box p { margin-top: 0; color: var(--ink); }
+.legal td.k { width: 30%; font-weight: 600; color: var(--ink); }
+.legal .fine { margin-top: 32px; font-size: var(--t-sm); }
+.legal h3 { font-size: 1.05rem; margin-top: 24px; }
+.legal table:has(td.k) { min-width: 0; }
+@media (max-width: 600px) { .legal td.k { width: 36%; } .legal th, .legal td { padding: 8px 8px; } }
