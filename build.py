@@ -19,7 +19,7 @@ CONFIG = {
     "CAL_URL": "",
     "UPDATED": "29 September 2026",
     # Guides go live only after Arturo has read and approved them. The preview always shows them.
-    "GUIDES_PUBLISHED": False,
+    "GUIDES_PUBLISHED": True,
     # Founding-client places still open (out of 5) at the launch price.
     "FOUNDING_OPEN": 5,
     # Real testimonials only, added with the client's written permission:

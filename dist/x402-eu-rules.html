@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Charging AI Agents over x402 in the EU: Which Rules Apply | 402Scope Compliance</title>
+<meta name="description" content="When an x402 API is just a merchant and when it becomes a crypto-asset service provider under MiCA, plus the terms, VAT and privacy rules that apply anyway.">
+<link rel="canonical" href="https://compliance.402scope.org/x402-eu-rules.html">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#0a0f1c">
+<meta property="og:type" content="website"><meta property="og:title" content="Charging AI Agents over x402 in the EU: Which Rules Apply | 402Scope Compliance">
+<meta property="og:description" content="When an x402 API is just a merchant and when it becomes a crypto-asset service provider under MiCA, plus the terms, VAT and privacy rules that apply anyway."><meta property="og:url" content="https://compliance.402scope.org/x402-eu-rules.html">
+<meta property="og:image" content="https://compliance.402scope.org/og-image.png"><meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preload" href="fonts/schibsted-grotesk-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="fonts.css">
+<link rel="stylesheet" href="styles.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Charging AI Agents over x402 in the EU: Which Rules Apply", "description": "When an x402 API is just a merchant and when it becomes a crypto-asset service provider under MiCA, plus the terms, VAT and privacy rules that apply anyway.", "url": "https://compliance.402scope.org/x402-eu-rules.html", "inLanguage": "en", "dateModified": "2026-09-29", "author": {"@type": "Person", "name": "Arturo Ferrándiz Fernández", "jobTitle": "Regulatory compliance consultant"}, "publisher": {"@type": "Organization", "name": "402Scope Compliance", "url": "https://compliance.402scope.org/"}}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="index.html" aria-label="402Scope Compliance, home"><svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true"><rect x="1" y="1" width="30" height="30" rx="8" fill="#141c30" stroke="#2c3858"/><circle cx="16" cy="16" r="7.5" fill="none" stroke="#edf1f8" stroke-width="2"/><path d="M16 4.5v4M16 23.5v4M4.5 16h4M23.5 16h4" stroke="#edf1f8" stroke-width="2" stroke-linecap="round"/><circle cx="16" cy="16" r="2.4" fill="#8ea8ff"/></svg><span class="brand-text"><strong>402Scope</strong><span>Compliance</span></span></a>
+    <nav class="nav" aria-label="Main">
+      <a href="index.html#who">Who it's for</a>
+      <a href="index.html#examples">Examples</a>
+      <a href="index.html#checker">Scanner</a>
+      <a href="index.html#report">Sample report</a>
+      <a href="index.html#pricing">Pricing</a>
+      <a href="guides.html">Guides</a>
+      <a class="btn btn-primary" href="index.html#pricing">Get my review</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="legal guide">
+  <div class="wrap">
+    <p class="guide-kicker"><a href="guides.html">Guides</a> · x402 and agent payments</p>
+    <h1>Charging AI agents over x402 in the EU: which rules apply</h1>
+    <p class="updated">By Arturo Ferrándiz Fernández, regulatory compliance consultant · Last reviewed 29 September 2026 · 7-minute read</p>
+    <div class="box"><p><b>In short.</b> An API that charges agents in USDC for its own data or service is, in principle, a business being paid in crypto-assets, not a crypto-asset service provider. The regulatory weight changes when you hold or move other people's funds, when you pay rewards on stablecoin balances, or when you issue your own token. Whatever the model, ordinary online-business rules still apply: provider identification, fair terms, VAT and data protection.</p></div>
+
+    <h2>Start with the flow of funds</h2>
+    <p>MiCA regulates crypto-asset services provided to clients, such as custody and administration of crypto-assets and transfer services on behalf of clients, and requires authorisation to provide them (Regulation (EU) 2023/1114, Art. 59). Being paid for your own service is not on that list. The question is always who controls the keys and whose money moves.</p>
+    <div class="table-wrap"><table>
+      <thead><tr><th scope="col">Your model</th><th scope="col">Likely position</th><th scope="col">Main rules</th></tr></thead>
+      <tbody>
+        <tr><td>Your API is paid in USDC or EURC to your own wallet</td><td>A merchant paid in crypto-assets. In principle no CASP authorisation.</td><td>E-commerce, consumer and VAT rules; GDPR</td></tr>
+        <tr><td>You receive payments for other merchants and pay them out (a facilitator)</td><td>May be a transfer service and, if you hold balances, custody.</td><td>MiCA Arts. 59, 70, 75 and 82; Travel Rule</td></tr>
+        <tr><td>Users keep a prepaid balance with you that agents spend</td><td>Custody and administration on behalf of clients, possibly payment services.</td><td>MiCA Arts. 59 and 70; PSD2</td></tr>
+        <tr><td>You reward users for holding stablecoin balances</td><td>Interest on e-money tokens is prohibited for CASPs.</td><td>MiCA Art. 50(2) and (3)</td></tr>
+        <tr><td>You launch a token for credits, discounts or governance</td><td>An offer of crypto-assets, unless an exemption applies.</td><td>MiCA Arts. 4 to 14; see our <a href="mica-white-paper-exemptions.html">white paper guide</a></td></tr>
+      </tbody>
+    </table></div>
+    <p>A description as "non-custodial" does not settle it. If your server holds keys that can move a user's funds, or you sign transfers for them, the substance is custody or transfer, whatever the product page says.</p>
+
+    <h2>If you are only a merchant</h2>
+    <h3>Identify yourself</h3>
+    <p>An API sold online is an information society service. Show the legal name, geographical address, email and register details of the provider, in the terms and on the site (Directive 2000/31/EC, Art. 5; in Spain, LSSI Art. 10).</p>
+    <h3>Write terms for paid calls</h3>
+    <p>Say what a call buys, what happens when it fails or returns a malformed response, how and when failed calls are refunded, and which law applies. "All payments are final and we accept no liability" is a problem as soon as consumers can pay (Directive 93/13/EEC, Annex point 1(b)). Our <a href="crypto-terms-of-service-eu.html">terms guide</a> lists the clauses that fail most often.</p>
+    <h3>Handle VAT and accounting in euros</h3>
+    <p>Payment in USDC does not change the VAT treatment of the service you sell. For a seller established in the EU, services to businesses in other Member States are generally invoiced under the reverse charge, and electronically supplied services to consumers are taxed where the consumer lives, which the EU One-Stop Shop lets you declare in one country. Record each receipt at its euro value on the day. Ask your tax adviser how this applies to your setup.</p>
+    <h3>Treat agent requests as data</h3>
+    <p>Requests made by an agent on behalf of a person can carry personal data, and wallet addresses that can be linked to a person are personal data. Say what you log, why and for how long in your privacy notice (GDPR Art. 13).</p>
+
+    <h2>If you hold or move other people's funds</h2>
+    <p>Then the CASP rules are likely to apply, and since 1 July 2026 there is no transitional period left for existing providers. Expect, among others:</p>
+    <ul>
+      <li>authorisation by your home authority before providing the service (MiCA Art. 59);</li>
+      <li>arrangements to protect clients' crypto-assets and to keep them apart from your own, and, for client funds other than e-money tokens, placement with a credit institution or central bank by the end of the next business day (Art. 70);</li>
+      <li>an agreement with clients covering at least the parties, how the transfer service works, security systems, fees and applicable law (Art. 82(1));</li>
+      <li>payment services only under your own payment licence or through an authorised third party, and telling clients which (Art. 70(4));</li>
+      <li>Travel Rule information for transfers, including checks on self-hosted addresses above EUR 1,000 (Regulation (EU) 2023/1113, Arts. 14 to 16).</li>
+    </ul>
+    <p>For infringements of the CASP provisions, Member States must provide for fines of at least up to EUR 5 million or 5% of annual turnover for legal persons (MiCA Art. 111(3)).</p>
+
+    <h2>Which stablecoin</h2>
+    <p>Merchants can generally accept the stablecoin they choose. EU crypto-asset service providers, including the exchanges you may use to convert to euros, can only offer e-money tokens that comply with MiCA, so check that your off-ramp supports the token you are paid in. USDC and EURC are issued in the EU as e-money tokens under MiCA.</p>
+
+    <h2>Checklist</h2>
+    <ol>
+      <li>Draw the flow of funds and mark every point where you control someone else's keys or balance.</li>
+      <li>If there is none, you are a merchant: provider identity, terms for paid calls, VAT and privacy.</li>
+      <li>If there is one, assess CASP authorisation before you onboard EU users.</li>
+      <li>No rewards linked to how long users hold stablecoin balances.</li>
+      <li>No token without checking the offer rules and exemptions.</li>
+      <li>Confirm your off-ramp supports the stablecoin you are paid in.</li>
+    </ol>
+
+    <p class="guide-note"><b>A note on independence.</b> The same person runs the <a href="https://402scope.org">402Scope observatory</a>, which measures x402 providers for free. Measurement is never sold. If a measured provider buys a review, it is disclosed on its observatory page and has no effect on its measurements.</p>
+
+    <div class="guide-cta">
+      <p><b>Want your model checked?</b> The MiCA Readiness Review maps your flow of funds, your terms and your marketing against these rules and gives you a fix list within 72 working hours.</p>
+      <p><a class="btn btn-primary" href="index.html#pricing">See the review</a> <a class="btn btn-line" href="index.html#checker">Scan my website</a></p>
+    </div>
+    <p class="fine">This guide is general information about EU law as it stood on the date above. It is not legal, tax or investment advice and does not create a client relationship. Sources: <a href="https://eur-lex.europa.eu/eli/reg/2023/1114/oj">Regulation (EU) 2023/1114 (MiCA)</a>, <a href="https://eur-lex.europa.eu/eli/reg/2023/1113/oj">Regulation (EU) 2023/1113</a>, <a href="https://eur-lex.europa.eu/eli/dir/2000/31/oj">Directive 2000/31/EC</a>, <a href="https://eur-lex.europa.eu/eli/dir/1993/13/oj">Directive 93/13/EEC</a>.</p>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="index.html"><svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true"><rect x="1" y="1" width="30" height="30" rx="8" fill="#141c30" stroke="#2c3858"/><circle cx="16" cy="16" r="7.5" fill="none" stroke="#edf1f8" stroke-width="2"/><path d="M16 4.5v4M16 23.5v4M4.5 16h4M23.5 16h4" stroke="#edf1f8" stroke-width="2" stroke-linecap="round"/><circle cx="16" cy="16" r="2.4" fill="#8ea8ff"/></svg><span class="brand-text"><strong>402Scope</strong><span>Compliance</span></span></a>
+        <p class="foot-note">Fixed-price EU compliance reviews for crypto and x402 teams. Regulatory analysis, not legal advice. Not a law firm.</p>
+      </div>
+      <nav aria-labelledby="f-service"><h2 id="f-service">Service</h2><ul>
+        <li><a href="index.html#review">The review</a></li><li><a href="index.html#report">Sample report</a></li>
+        <li><a href="index.html#pricing">Pricing</a></li><li><a href="index.html#faq">FAQ</a></li><li><a href="guides.html">Guides</a></li></ul></nav>
+      <nav aria-labelledby="f-obs"><h2 id="f-obs">402Scope</h2><ul>
+        <li><a href="https://402scope.org">Observatory</a></li><li><a href="index.html#observatory">Independence</a></li>
+        <li><a href="index.html#about">About</a></li></ul></nav>
+      <nav aria-labelledby="f-legal"><h2 id="f-legal">Legal</h2><ul>
+        <li><a href="terms-of-engagement.html">Terms of Engagement</a></li><li><a href="legal-notice.html">Legal notice</a></li><li><a href="privacy.html">Privacy</a></li>
+        <li><a href="cookies.html">Cookies</a></li></ul></nav>
+    </div>
+    <div class="foot-bottom"><span>Arturo Ferrándiz Fernández, Valencia, Spain</span><span class="email">hello@402scope.org</span></div>
+  </div>
+</footer>
+</body>
+</html>
