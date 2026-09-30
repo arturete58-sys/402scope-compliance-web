@@ -18,6 +18,8 @@ CONFIG = {
     # Cal.com link for the 15-minute call. Empty: the buttons open an email instead.
     "CAL_URL": "",
     "UPDATED": "29 September 2026",
+    # Guides go live only after Arturo has read and approved them. The preview always shows them.
+    "GUIDES_PUBLISHED": False,
     # Founding-client places still open (out of 5) at the launch price.
     "FOUNDING_OPEN": 5,
     # Real testimonials only, added with the client's written permission:
@@ -156,7 +158,7 @@ def header(is_home):
       <a href="{base}#checker">Scanner</a>
       <a href="{base}#report">Sample report</a>
       <a href="{base}#pricing">Pricing</a>
-      <a href="guides.html">Guides</a>
+      {'<a href="guides.html">Guides</a>' if show_guides() else ''}
       <a class="btn btn-primary" href="{base}#pricing">Get my review</a>
     </nav>
   </div>
@@ -174,7 +176,7 @@ def footer():
       </div>
       <nav aria-labelledby="f-service"><h2 id="f-service">Service</h2><ul>
         <li><a href="index.html#review">The review</a></li><li><a href="index.html#report">Sample report</a></li>
-        <li><a href="index.html#pricing">Pricing</a></li><li><a href="index.html#faq">FAQ</a></li><li><a href="guides.html">Guides</a></li></ul></nav>
+        <li><a href="index.html#pricing">Pricing</a></li><li><a href="index.html#faq">FAQ</a></li>{'<li><a href="guides.html">Guides</a></li>' if show_guides() else ''}</ul></nav>
       <nav aria-labelledby="f-obs"><h2 id="f-obs">402Scope</h2><ul>
         <li><a href="https://402scope.org">Observatory</a></li><li><a href="index.html#observatory">Independence</a></li>
         <li><a href="index.html#about">About</a></li></ul></nav>
@@ -256,8 +258,17 @@ def head_tags(page, mode):
     return "\n".join(tags)
 
 
+def is_guide(p):
+    return p["src"].startswith("pages/guide") or p["file"] == "guides.html"
+
+
+def show_guides():
+    return MODE["v"] != "dist" or CONFIG["GUIDES_PUBLISHED"]
+
+
 def build(mode):
     MODE["v"] = mode
+    pages = [p for p in PAGES if show_guides() or not is_guide(p)]
     out = ROOT / mode
     if out.exists():
         shutil.rmtree(out)
@@ -269,7 +280,7 @@ def build(mode):
     if mode == "dist":
         shutil.copytree(ROOT / "vendor", out / "vendor")
     (out / "favicon.svg").write_text(MARK.replace(' class="brand-mark"', ' xmlns="http://www.w3.org/2000/svg"'), encoding="utf-8")
-    for page in PAGES:
+    for page in pages:
         body = header(page["file"] == "index.html") + "\n" + fill((ROOT / page["src"]).read_text(encoding="utf-8")) + "\n" + footer()
         head = head_tags(page, mode)
         if mode == "dist" or page["file"] != "index.html":
@@ -286,7 +297,7 @@ def build(mode):
         (out / "fonts.css").write_text(FONT_FACES.strip() + "\n", encoding="utf-8")
         (out / "robots.txt").write_text(f"User-agent: *\nAllow: /\n\nSitemap: {CONFIG['SITE_URL']}/sitemap.xml\n", encoding="utf-8")
         today = datetime.date.today().isoformat()
-        urls = "".join(f"  <url><loc>{CONFIG['SITE_URL']}/{'' if p['file'] == 'index.html' else p['file']}</loc><lastmod>{today}</lastmod></url>\n" for p in PAGES)
+        urls = "".join(f"  <url><loc>{CONFIG['SITE_URL']}/{'' if p['file'] == 'index.html' else p['file']}</loc><lastmod>{today}</lastmod></url>\n" for p in pages)
         (out / "sitemap.xml").write_text(f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n{urls}</urlset>\n', encoding="utf-8")
         (out / "_headers").write_text(
             "/*\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: strict-origin-when-cross-origin\n"

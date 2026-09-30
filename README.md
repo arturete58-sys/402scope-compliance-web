@@ -48,3 +48,18 @@ Añade solo opiniones reales, con permiso escrito del cliente, en `TESTIMONIALS`
 - Front end: `js/scan.js` (tab "Scan a website" in the checker section). On the preview and on any host without the function, the tab says the scanner is not available and offers the copy checker.
 - Recommended after the first deploy: in Cloudflare, Security > WAF > Rate limiting rules, add one rule for `/api/scan` (for example 10 requests per minute per IP, block for 10 minutes). The free plan includes one rule.
 - Local test: set `SCAN_ALLOW_LOCAL=1` in the function environment to allow localhost targets.
+
+## Self-hosting on your own server (VPS)
+
+The site can run on any Debian/Ubuntu server instead of Cloudflare Pages:
+
+```
+ssh root@YOUR_SERVER
+curl -fsSL https://raw.githubusercontent.com/arturete58-sys/402scope-compliance-web/main/deploy/install.sh -o install.sh && bash install.sh
+```
+
+`deploy/install.sh` clones this repo to `/opt/402scope-compliance-web`, runs `server/server.mjs` (static site + `/api/scan`, no dependencies) as the systemd service `402scope-compliance` on `127.0.0.1:8402`, and puts HTTPS in front with the web server already on the machine (Caddy, nginx or Apache) or installs Caddy. Other sites on the server are not touched. Point an A record for `compliance` to the server first.
+
+Update after new commits: `bash /opt/402scope-compliance-web/deploy/update.sh`.
+
+Guides are hidden from the live build until `GUIDES_PUBLISHED` is set to `True` in `build.py` (the preview always shows them).
