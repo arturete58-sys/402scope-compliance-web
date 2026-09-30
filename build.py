@@ -115,7 +115,7 @@ PAGES = [
      "desc": "Terms that apply to MiCA Readiness Reviews and other services from 402Scope Compliance."},
     {"file": "guides.html", "src": "pages/guides.html",
      "title": "Guides", "seo_title": "EU Crypto Compliance Guides | 402Scope Compliance",
-     "desc": "Short, sourced guides to MiCA marketing rules, white paper exemptions and crypto terms of service for EU users."},
+     "desc": "Short, sourced guides to MiCA marketing rules, white paper exemptions, crypto terms of service and x402 payments for EU users."},
     {"file": "mica-marketing-rules.html", "src": "pages/guide-mica-marketing-rules.html",
      "title": "MiCA marketing rules", "seo_title": "MiCA Marketing Rules: The Article 7 Checklist | 402Scope Compliance",
      "desc": "What MiCA Article 7 requires from crypto marketing: the four requirements, the mandatory statement, timing, KOLs and fines, with examples."},
@@ -125,6 +125,9 @@ PAGES = [
     {"file": "crypto-terms-of-service-eu.html", "src": "pages/guide-crypto-terms-of-service-eu.html",
      "title": "Crypto terms of service for EU users", "seo_title": "Crypto Terms of Service for EU Users: 7 Clauses That Fail | 402Scope Compliance",
      "desc": "Seven clauses in crypto terms of service that are unfair or unenforceable for EU consumers, with the rule behind each and what to write instead."},
+    {"file": "x402-eu-rules.html", "src": "pages/guide-x402-eu-rules.html",
+     "title": "x402 and EU rules", "seo_title": "Charging AI Agents over x402 in the EU: Which Rules Apply | 402Scope Compliance",
+     "desc": "When an x402 API is just a merchant and when it becomes a crypto-asset service provider under MiCA, plus the terms, VAT and privacy rules that apply anyway."},
     {"file": "cookies.html", "src": "pages/cookies.html",
      "title": "Cookies", "seo_title": "Cookies | 402Scope",
      "desc": "Cookie information for the 402Scope Compliance website."},
@@ -244,6 +247,12 @@ def head_tags(page, mode):
     tags.append('<link rel="stylesheet" href="styles.css">')
     if page["file"] == "index.html":
         tags.append(json_ld())
+    if page["src"].startswith("pages/guide-"):
+        art = {"@context": "https://schema.org", "@type": "Article", "headline": page["title"] if len(page["title"]) > 30 else page["seo_title"].split(" | ")[0],
+               "description": page["desc"], "url": url, "inLanguage": "en", "dateModified": CONFIG["UPDATED_ISO"] if "UPDATED_ISO" in CONFIG else "2026-09-29",
+               "author": {"@type": "Person", "name": "Arturo Ferrándiz Fernández", "jobTitle": "Regulatory compliance consultant"},
+               "publisher": {"@type": "Organization", "name": "402Scope Compliance", "url": CONFIG["SITE_URL"] + "/"}}
+        tags.append('<script type="application/ld+json">' + json.dumps(art, ensure_ascii=False) + '</script>')
     return "\n".join(tags)
 
 

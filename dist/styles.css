@@ -478,3 +478,5 @@ blockquote.law cite { display: block; margin-top: 8px; font: 500 var(--t-sm)/1.4
 .guide-list a:hover { border-color: var(--cobalt); }
 .guide-list b { font: 700 1.1rem/1.35 var(--font-ui); }
 .guide-list span { color: var(--ink-2); font-family: var(--font-doc); }
+.guide h3 { font-size: 1.05rem; margin-top: 24px; }
+.guide-note { margin-top: 28px; padding: 14px 16px; border-left: 3px solid var(--line); color: var(--ink-2); font-size: 0.98rem !important; }
